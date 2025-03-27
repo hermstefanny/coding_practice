@@ -6,32 +6,25 @@ class Solution(object):
         """
         count = 0
         clean_string = ""
-        clean_array = []
-        string_array = []
+        individual_string = ""
 
         for char in s:
 
             if char == "(":
                 count += 1
-                string_array.append(char)
+                individual_string += char
 
             elif char == ")":
                 count -= 1
-                string_array.append(char)
+                individual_string += char
 
             if count == 0:
-                # print("breaking point")
-                new_string = "".join([str(s) for s in string_array[1:-1]])
-                clean_array.append(new_string)
-                # print(clean_array)
-
-                string_array = []
-
-        clean_string = "".join([str(s) for s in clean_array])
+                clean_string += individual_string[1:-1]
+                individual_string = ""
 
         return clean_string
 
 
 solution = Solution()
-removed_string = solution.removeOuterParentheses("()()")
+removed_string = solution.removeOuterParentheses("(()())(())")
 print(removed_string)
