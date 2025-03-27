@@ -5,36 +5,37 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        for i in range(len(nums) - 1):
-            if nums[i] > nums[i + 1]:
+
+        for i, num in enumerate(nums):
+
+            if i == len(nums) - 1:
+                pivot = 0
+
+            elif nums[i] > nums[i + 1]:
+
+                pivot = i + 1
+                print(pivot)
                 break
 
-        a = nums[i + 1 :] + nums[: i + 1]
+        a = nums[pivot:] + nums[:pivot]
+        print(a)
 
         left = 0
-        right = len(nums) - 1
+        right = len(a) - 1
         while left <= right:
             mid = (left + right) // 2
-            if target == nums[mid]:
-                return mid
-            elif target < nums[mid]:
+            if target == a[mid]:
+                return (mid + pivot) % len(nums)
+            elif target < a[mid]:
                 right = mid - 1
             else:
                 left = mid + 1
 
-        return None
+        return -1
 
 
 solution = Solution()
-nums = [
-    0,
-    1,
-    2,
-    4,
-    5,
-    6,
-    7,
-]
-target = 6
+nums = [3, 1]
+target = 3
 sol = solution.search(nums, target)
 print(sol)
