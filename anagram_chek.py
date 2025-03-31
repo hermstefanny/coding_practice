@@ -9,8 +9,7 @@ class Solution(object):
         if len(s) != len(t):
             return False
 
-        for char in s:
-            s_list.append(char)
+        s_list = [char for char in s]
 
         for char in t:
             if char in s_list:

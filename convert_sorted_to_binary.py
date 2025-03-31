@@ -9,23 +9,20 @@ class TreeNode:
 
 
 class Solution:
-    def binary_build(self, binaryTree, node_to_insert):
-
-        if node_to_insert > binaryTree.val:
-            return self.binary_build(binaryTree.left, node_to_insert)
-
-        if node_to_insert < binaryTree.val:
-            return self.binary_build(binaryTree.right, node_to_insert)
 
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
 
-        root_value = nums[(0 + len(nums) - 1) // 2]
-        root = TreeNode(root_value)
+        if not nums:
+            return
+        root_pos = len(nums) // 2
+        root = nums[root_pos]
 
-        for num in nums:
-            self.binary_build(root, num)
-
-        return root
+        binary_Tree = TreeNode(
+            root,
+            self.sortedArrayToBST(nums[:root_pos]),
+            self.sortedArrayToBST(nums[root_pos + 1 :]),
+        )
+        return binary_Tree
 
     def dfs_recursive(self, node, ordered_search) -> list:
         if not node:
@@ -38,5 +35,7 @@ class Solution:
 
 
 solution = Solution()
-bin_tree_1 = solution.sortedArrayToBST([-10, -3, 0, 5, 9])
-print(bin_tree_1)
+
+tree_dummy = solution.sortedArrayToBST([-10, -3, 0, 5, 9])
+
+print(solution.dfs_recursive(tree_dummy, []))
