@@ -16,6 +16,7 @@ class Solution:
         if not root:
             return
         traversed = deque([root])
+        print(traversed)
 
         while traversed:
             node = traversed.popleft()
@@ -30,20 +31,21 @@ class Solution:
 
         return ordered_search
 
-    def bfs_with_recursion(self, node: Optional[TreeNode], ordered_search) -> list:
+    def bfs_with_recursion(self, traversed: deque, ordered_search) -> list:
 
-        if not node:
-            return
+        if not traversed:
+            return ordered_search
 
-        traversed = deque([node])
         print(traversed)
         node = traversed.popleft()
         ordered_search.append(node.val)
 
-        self.bfs_with_recursion(node.left, ordered_search)
-        self.bfs_with_recursion(node.right, ordered_search)
+        if node.left:
+            traversed.append(node.left)
+        if node.right:
+            traversed.append(node.right)
 
-        return ordered_search
+        return self.bfs_with_recursion(traversed, ordered_search)
 
     def dfs_recursive(self, node, ordered_search) -> list:
         if not node:
@@ -79,6 +81,6 @@ class Solution:
 solution = Solution()
 root = TreeNode(3, TreeNode(9), TreeNode(20, TreeNode(15), TreeNode(7)))
 
-print(solution.minDepth(root))
-# print(solution.bfs_with_queue(root, []))
-# print(solution.bfs_with_recursion(root, []))
+# print(solution.minDepth(root))
+print(solution.bfs_with_queue(root, []))
+# print(solution.bfs_with_recursion(deque([root]), []))
