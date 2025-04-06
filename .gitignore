@@ -1,0 +1,23 @@
+# Ignore environment files
+.env
+.venv
+env/
+venv/
+ENV/
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignore npm/yarn dependencies
+node_modules/
+jspm_packages/
+.npm
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.pnpm-debug.log
+
+#Ignore JS files
+js-review/
