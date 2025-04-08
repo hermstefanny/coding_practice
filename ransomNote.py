@@ -9,15 +9,21 @@ def canConstruct(ransomNote: str, magazine: str) -> bool:
         else:
             mag_dict[char] += 1
 
-    print(mag_dict)
+    print(f"The dictionary was{mag_dict}")
 
     for char in ransomNote:
-        if char in mag_dict:
+
+        if char in mag_dict and mag_dict[char] > 0:
             mag_dict[char] -= 1
             note += char
 
-    print(mag_dict)
+    print(f"And now it is{mag_dict}")
     print(note)
+
+    if note == ransomNote:
+        return True
+    else:
+        return False
 
 
 print(canConstruct("aa", "aab"))
