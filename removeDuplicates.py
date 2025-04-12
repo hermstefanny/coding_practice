@@ -28,26 +28,24 @@ def removeDuplis(nums: List[int]) -> int:
 
 def removeDuplicates(nums: List[int]) -> int:
     j = 1
-    count = 0
+    i = 0
 
-    for i, num in enumerate(nums):
+    # for j in range(1, len(num)): --> this caused that the j behaves in unintended ways
+    while j < len(nums):
 
-        if nums[j] == nums[i] and count >= 1:
-            print(f"conteo {count}")
-            # print(f"pointr 1  {nums[j]}")
-            # print(f"pointer 2  {nums[i]}")
-            # print(i)
-            nums.pop(i)
-            count = 0
+        if nums[j] == nums[i]:
+            exit_num = nums.pop(j)
+            # nums.append(exit_num)
 
-            print(f"numero   {nums[i]}")
-        count += 1
+            j -= 1
+
+        else:
+            i += 1
+
         j += 1
+        print(f"jota: {j}, i {i}")
 
-    print(nums)
+    return nums
 
 
-# print(removeDuplis([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
-# print(removeDuplis([1, 2, 2]))
-
-removeDuplicates([0, 0, 1, 1, 1, 1, 2, 3, 3])
+print(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))

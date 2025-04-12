@@ -1,7 +1,6 @@
 def canConstruct(ransomNote: str, magazine: str) -> bool:
 
     mag_dict = {}
-    note = ""
 
     for char in magazine:
         if char not in mag_dict:
@@ -15,15 +14,10 @@ def canConstruct(ransomNote: str, magazine: str) -> bool:
 
         if char in mag_dict and mag_dict[char] > 0:
             mag_dict[char] -= 1
-            note += char
 
-    print(f"And now it is{mag_dict}")
-    print(note)
-
-    if note == ransomNote:
-        return True
-    else:
-        return False
+        else:
+            return False
+    return True
 
 
 print(canConstruct("aa", "aab"))
