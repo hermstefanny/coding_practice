@@ -3,32 +3,37 @@ from typing import List
 
 def maxProfit(prices: List[int]) -> int:
 
-    i = 0
-    j = 1
-    k = 1
-    buy = prices[i]
+    len_prices = len(prices)
+    if len_prices < 2:
+        return 0
+    i, j, k = 0, 1, 1
 
-    while j < len(prices):  ## review to do in an only loop
+    buy = prices[i]
+    sell = prices[j]
+
+    while j < len_prices:
         if prices[j] < prices[i]:
             buy = prices[j]
             k = j + 1
             break
         i += 1
         j += 1
+    print(buy)
 
-    print(k)
-    sell = prices[j]
-
-    while k < len(prices):
-        if prices[k] > prices[j]:
+    print(i, j, k)
+    while k < len_prices:
+        if prices[k] > buy and prices[k] > sell:
             sell = prices[k]
-            break
-        j += 1
-        k += 1
 
+        k += 1
+    print(k)
+
+    print(sell)
     return max(sell - buy, 0)
 
 
-# print(maxProfit([7, 1, 5, 3, 6, 4]))
-# print(maxProfit([7, 6, 4, 3, 1]))
-print(maxProfit([1, 2]))
+print(f"El profit is {maxProfit([7, 1, 5, 3, 6, 4])}")
+print(f"El profit is {maxProfit([7, 6, 4, 3, 1])}")
+print(f"El profit is {maxProfit([1, 2])}")
+print(f"El profit is {maxProfit([1, 2, 4])}")
+print(f"El profit is {maxProfit([1, 4, 2])}")
