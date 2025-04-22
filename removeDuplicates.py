@@ -34,7 +34,7 @@ def removeDuplicates(nums: List[int]) -> int:
     while j < len(nums):
 
         if nums[j] == nums[i]:
-            exit_num = nums.pop(j)
+            nums.pop(j)
             # nums.append(exit_num)
 
             j -= 1
