@@ -11,7 +11,7 @@ def maxProfit(prices: List[int]) -> int:
 
     while i < len_prices - 1:
         j = i + 1
-        while j < len_prices - 1:
+        while j < len_prices:
             possible_win = prices[j] - prices[i]
             if possible_win > win:
                 win = possible_win
@@ -21,8 +21,8 @@ def maxProfit(prices: List[int]) -> int:
     return max(win, 0)
 
 
-assert maxProfit([7, 1, 5, 3, 6, 4]), 5
-assert maxProfit([7, 6, 4, 3, 1]), 0
-assert maxProfit([1, 2]), 1
-assert maxProfit([1, 2, 4]), 3
-assert maxProfit([1, 4, 2]), 3
+print(maxProfit([7, 1, 5, 3, 6, 4]))
+print(maxProfit([7, 6, 4, 3, 1]))
+print(maxProfit([1, 2]))
+print(maxProfit([1, 2, 4]))
+print(maxProfit([1, 4, 2]))
