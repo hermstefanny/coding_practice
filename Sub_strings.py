@@ -1,16 +1,20 @@
 def isSubsequence(s: str, t: str) -> bool:
 
     replica = ""
-    ind = 0
 
-    for char1 in s:
-        pos = t.find(char1)
-        print(pos)
+    i, j = 0, 0
 
-        if ind <= pos:
-            t = t.replace(char1, "", 1)
-            replica += char1
-            ind = pos
+    if not s:
+        return True
+
+    while j < len(t):
+        if s[i] == t[j]:
+            replica += t[j]
+            i += 1
+        if i >= len(s):
+            break
+        j += 1
+    print(replica)
 
     if replica == s:
         return True
@@ -18,10 +22,12 @@ def isSubsequence(s: str, t: str) -> bool:
         return False
 
 
-# print(isSubsequence("abc", "ahbgdc"))
-# print(isSubsequence("axc", "ahbgdc"))
-# print(isSubsequence("aac", "ahbgdc"))
-# print(isSubsequence("abc", "ahbbbc"))
-# print(isSubsequence("acb", "ahbgdc"))
+print(isSubsequence("abc", "ahbgdc"))
+print(isSubsequence("axc", "ahbgdc"))
+print(isSubsequence("aac", "ahbgdc"))
+print(isSubsequence("abc", "ahbbbc"))
+print(isSubsequence("acb", "ahbgdc"))
 print(isSubsequence("aza", "abzba"))
 print(isSubsequence("ab", "baab"))
+print(isSubsequence("", "ahbgdc"))
+print(isSubsequence("b", "abc"))
