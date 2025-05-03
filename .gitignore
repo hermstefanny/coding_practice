@@ -21,3 +21,6 @@ jspm_packages/
 
 #Ignore JS files
 js-review/
+
+# Ignore other files
+.txt
